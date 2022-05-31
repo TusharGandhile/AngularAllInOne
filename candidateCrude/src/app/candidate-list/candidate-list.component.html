@@ -1,0 +1,39 @@
+<div class="container my-4">
+        <main>
+            <div class="py-5">
+                <h2>
+                    Candidates List
+                    <button class="btn btn-primary float-end" routerLink="/candidateForm">Add Candidate</button>
+                </h2>
+            </div>
+
+            <div class="row">
+                <div class="col-12 ms-auto me-auto">
+                    <div class="card">
+                        <div class="card-body">
+                            <table class="table">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Number of Skills</th>
+                                    <th>Total Work Experience (in months)</th>
+                                    <th>Actions</th>
+                                </tr>
+                                <tr class="one" *ngFor="let data of formdata;index as i">
+                                    <td>{{i+1}}</td>
+                                    <td>{{data.firstName +" "+data.lastName}}</td>
+                                    <td>{{data.email}}</td>
+                                    <td>{{data.skills.length}}</td>
+                                    <td>{{arr[i]}}</td>
+                                    <td>
+                                        <a class="text-primary" (click)="Editcandidate(i)">Edit</a>
+                                        <a  class="text-danger ms-2" (click)="Deletecandidate(i)">Delete</a>
+                                    </td>
+                                </tr>
+                               
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>

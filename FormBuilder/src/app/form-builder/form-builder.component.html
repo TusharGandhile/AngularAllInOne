@@ -1,0 +1,76 @@
+<h4>Form Builder</h4>
+<!-- <form #frm="ngForm">
+    <label>Label:</label>
+    <input type="text" name="label" placeholder="Give label.." ngModel>
+    <label>Field Type:</label>
+<select #selected name="fields" id="field" (change)="changeField(selected.value)" ngModel>
+    <option value="text">Text</option>
+  <option value="textarea">Textarea</option>
+  <option value="select">Select</option>
+  <option value="checkbox">Checkbox</option>
+  <option value="radio">Radio</option>
+</select>
+<label>Name:</label>
+<input type="text" name="fname" placeholder="Give name to field.." ngModel>
+<div *ngIf="option">
+<label>Options:</label><br> 
+<input type="text"  name="options" placeholder="write options..." ngModel>
+</div>
+<button class="btn btn-secondary" [disabled]="frm.invalid" (click)="addField()">Submit</button>
+</form> -->
+
+
+
+<div class="register-form">
+  <form [formGroup]="form" (ngSubmit)="addField()">
+    <div class="form-group">
+      <label>Label</label>
+      <input
+        type="text"
+        formControlName="label"
+        class="form-control"
+      />
+      <small *ngIf="form.get('label')?.invalid && form.get('label')?.touched" class="text-danger">Label is required..</small>
+
+    </div>
+
+    <div class="form-group">
+      <label>Field Type:</label>
+      <select #selected formControlName="fields" id="field" class="form-control"(change)="changeField(selected.value)" >
+        <option value="text">Text</option>
+      <option value="textarea">Textarea</option>
+      <option value="select">Select</option>
+      <option value="checkbox">Checkbox</option>
+      <option value="radio">Radio</option>
+    </select>
+    <small *ngIf="form.get('fields')?.invalid && form.get('fields')?.touched" class="text-danger">Field is required..</small>
+
+  </div>
+
+    <div class="form-group">
+      <label>Name:</label>
+      <input
+        type="text"
+        formControlName="fname"
+        class="form-control"
+      />
+      <small *ngIf="form.get('fname')?.invalid && form.get('fname')?.touched" class="text-danger">Name is required..</small>
+
+    </div>
+   
+    <div class="form-group" *ngIf="option">
+      <label>Options:</label>
+      <input
+        type="text"
+        formControlName="options"
+        class="form-control"
+      />
+      <small *ngIf="form.get('options')?.invalid && form.get('options')?.touched" class="text-danger">Options are required..</small>
+
+</div>
+    <div class="form-group">
+      <button type="submit" [disabled]="form.invalid" class="btn btn-primary">Submit</button>
+    </div>
+
+  </form>
+</div>

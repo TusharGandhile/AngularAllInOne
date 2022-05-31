@@ -1,0 +1,172 @@
+  <div class="container my-4">
+    <main>
+        <form [formGroup]="regForm" (ngSubmit)="update()"  class="was-validated" >
+      <div class="py-5 text-center">
+        <h2>Edit Candidate</h2>
+      </div>
+
+      <div class="row g-5">
+        <div class="col-md-7 col-lg-8 ms-auto me-auto">
+          <h4 class="mb-3">Basic Info</h4>
+          <div class="row g-3">
+            <div class="col-sm-6">
+                <div class="form-control">
+              <label class="form-label">First name</label>
+              <input type="text"  formControlName="firstName" class="form-control" required>
+              <small *ngIf="regForm.get('firstName')?.touched && regForm.get('firstName')?.invalid" class="text-danger">First Name is required..</small>
+
+            </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="form-control">
+              <label class="form-label">Last name</label>
+              <input type="text" formControlName="lastName" class="form-control" required>
+              <small *ngIf="regForm.get('lastName')?.touched && regForm.get('lastName')?.invalid" class="text-danger">Last Name is required..</small>
+
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label class="form-label">Gender</label>
+              <div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" formControlName="gender" name="gender" value="male" type="radio" required>
+                  <label class="form-check-label">Male</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" formControlName="gender" name="gender" value="female" type="radio" required>
+                  <label class="form-check-label">Female</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" formControlName="gender" name="gender" value="other" type="radio" required >
+                  <label class="form-check-label">Other</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12">
+                <div class="form-control">
+              <label class="form-label">Email</label>
+              <input type="email" class="form-control" formControlName="email" placeholder="you@example.com" required>
+              <small *ngIf="regForm.get('email')?.touched && regForm.get('email')?.invalid" class="text-danger">email is required & must valid..</small>
+
+              </div>
+            </div>
+
+            <div class="col-12">
+                <div class="form-control">
+              <label class="form-label">Address</label>
+              <textarea class="form-control" formControlName="address" placeholder="1234 Main St" required></textarea>
+              <small *ngIf="regForm.get('address')?.touched && regForm.get('address')?.invalid" class="text-danger">Address is required ..</small>
+
+              </div>
+            </div>
+
+            <div class="col-md-5">
+                <div class="form-control">
+              <label class="form-label">Country</label>
+              <select class="form-select" formControlName="country" required>
+                <option value="">Choose...</option>
+                <option>India</option>
+                <option>United States</option>
+              </select>
+              <small *ngIf="regForm.get('country')?.touched && regForm.get('country')?.invalid" class="text-danger">Country is required..</small>
+
+              </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-control">
+              <label class="form-label">State</label>
+              <select class="form-select" formControlName="state" required>
+                <option value="">Choose...</option>
+                <option>Maharashtra</option>
+                <option>Karnataka</option>
+              </select>
+              <small *ngIf="regForm.get('state')?.touched && regForm.get('state')?.invalid" class="text-danger">State is required ..</small>
+
+              </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-control">
+              <label class="form-label">Pin / Zip</label>
+              <input type="text" formControlName="zip" class="form-control" required>
+              <small *ngIf="regForm.get('zip')?.touched && regForm.get('zip')?.invalid" class="text-danger">pin/zip is required ..</small>
+
+              </div>
+            </div>
+          </div>
+
+          <hr class="my-4">
+
+          <h4 class="mb-3">Professional Info</h4>
+
+          <div class="row g-3">
+            <div class="col-12">
+              <label class="form-label">
+                Choose your skills
+                <span class="small text-muted">(min 3 skills)</span>
+              </label>
+              <div class="mb-3">
+                <div class="form-check form-check-inline" *ngFor="let skill of mySkills;index as i">
+                  <input class="form-check-input" formArrayName="skills" value="{{skill}}" type="checkbox" [checked]="updateFormdata.skills.includes(skill)" (change)="changecheck($event,i)" [required]="a">
+                  <label class="form-check-label">{{skill}}</label>
+                  </div>
+                   <!-- <small *ngIf="a" class="text-danger">Min 3 skills are required..</small> -->
+              </div>
+            </div>
+          </div>
+
+          <div class="row gy-3">
+            <div class="col-12">
+              <label class="form-label">
+                <strong>
+                  Experience
+                  <span class="small text-muted">(min 2, max 5 items)</span>
+                </strong>
+              </label>
+
+              <div formArrayName="experience">
+              <div class="card mx-3 mt-3"  *ngFor="let ex of exp.controls;index as i" >
+                <div class="card-body" >
+                  <h6 class="card-title text-muted mb-3">
+                    Experience {{i+1}}
+                    <a href="#" class="float-end text-danger fw-normal">Remove</a>
+                  </h6>
+                  <div class="row g-3" [formGroupName]="i">
+                    <div class="col-6">
+                      <label class="form-label">Company Name</label>
+                      <input type="text" formControlName="company" class="form-control" required>
+                      <small *ngIf="ex.get('company')?.touched  && regForm.get('company')?.invalid" class="text-danger">Company name is required ..</small>
+
+                    </div>
+                    <div class="col-6">
+                      <label class="form-label">Duration <span class="text-muted">(in months)</span></label>
+                      <input type="number" formControlName="duration" class="form-control" required>
+                      <small *ngIf="ex.get('duration')?.touched  && regForm.get('duration')?.invalid" class="text-danger">Company name is required ..</small>
+
+                    </div>
+                    <div class="col-12">
+                      <label class="form-label">Describe your responsibilities</label>
+                      <textarea class="form-control" formControlName="responsibility" required></textarea>
+                      <small *ngIf="ex.get('responsibility')?.touched  && regForm.get('responsibility')?.invalid" class="text-danger">Company name is required ..</small>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+             
+              <a class="d-block mt-3" (click)="addExperience()">Add more experience</a>
+            </div>
+          </div>
+
+          <hr class="my-4">
+
+          <button class="btn btn-primary" [disabled]="regForm.invalid" type="submit">Save Candidate</button>
+        </div>
+      </div>
+      </form>
+    </main>
+  </div>

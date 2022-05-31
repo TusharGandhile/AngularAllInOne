@@ -1,0 +1,35 @@
+body{
+    display:flex;
+    
+}
+app-form-builder{
+    margin-left: 10%;
+    width:35%;
+    border:1px solid black;
+    background-color: rgb(226, 226, 226);
+    border-radius: 10px;
+    margin-top: 10%;
+    padding:20px;
+    max-height: 600px;
+}
+app-form-component{
+    width:35%;
+    border:1px solid black;
+    background-color: rgb(226, 226, 226);
+    border-radius: 10px;
+    margin-left: 15%;
+    margin-top: 10%;
+    padding:20px;
+}
+app-form-component2-dynamic{
+    width:35%;
+    border:1px solid black;
+    background-color: rgb(226, 226, 226);
+    border-radius: 10px;
+    margin-left: 15%;
+    margin-top: 10%;
+    padding:20px; 
+}
+h5{
+    text-align: center;
+}

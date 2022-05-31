@@ -1,0 +1,31 @@
+<span >
+<h4>Form Component</h4>
+
+<form  #frmval="ngForm" *ngIf="formval">
+    <div *ngFor="let val of formarr;index as i">
+<div *ngIf="val.fields!='select'">
+<label>{{formarr[i].label}}</label><br>
+<input *ngIf="val.fields=='text'"  type="text" name="{{val.fname}}" ngModel>
+<input *ngIf="val.fields=='textarea'"  type="text" name="{{val.fname}}" ngModel>
+
+<div *ngFor="let fa of val.options;index as j " >
+<input *ngIf="val.fields=='radio'" type="radio" value="{{fa}}" name="{{val.fname}}" ngModel>
+<input *ngIf="val.fields=='checkbox'" type="checkbox" value="{{fa}}" name="{{val.fname}}" (change)="changeCheck($event,val)" ngModel>
+
+<label > {{fa}}</label>
+</div>
+</div>
+
+<div *ngIf="val.fields=='select'">
+<div>
+<select  name="{{val.fname}}" id="field" ngModel>
+    <option *ngFor="let fa of val.options;index as j " value="{{fa}}">{{fa}}</option>
+  
+</select>
+</div>
+</div>
+</div>
+<button class="btn btn-secondary"  (click)="submit()">Submit Form</button>
+</form>
+</span>
+ 

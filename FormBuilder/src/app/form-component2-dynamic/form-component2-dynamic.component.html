@@ -1,0 +1,29 @@
+<form [formGroup]="formvalue" (ngSubmit)="submit()" *ngIf="formvalue">
+  
+  <div *ngFor="let val of formarr">
+      <div *ngIf="val.fields!='select'" >
+        <div  class="form-group">
+      <label>{{val.label}}</label><br>
+      <input *ngIf="val.fields=='text'"  type="text" formControlName="{{val.fname}}" >
+      <input *ngIf="val.fields=='textarea'"  type="text" formControlName="{{val.fname}}" >
+    </div>
+      <div *ngFor="let fa of val.options"  class="form-group">
+       
+      <input *ngIf="val.fields=='radio'" type="radio" value="{{fa}}" formControlName="{{val.fname}}" >
+      <input *ngIf="val.fields=='checkbox'" type="checkbox" value="{{fa}}" name="{{val.fname}}" (change)="changeCheck($event,val.fname)" >
+      
+      <label > {{fa}}</label>
+      </div>
+      </div>
+      
+      <div *ngIf="val.fields=='select'">
+      <div class="form-group">
+      <select  formControlName="{{val.fname}}" id="field" >
+          <option *ngFor="let fa of val.options" value="{{fa}}">{{fa}}</option>
+        
+      </select>
+      </div>
+      </div>
+      </div>
+      <button type="submit" class="btn btn-secondary" >Submit Form</button>
+</form>
