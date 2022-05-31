@@ -1,0 +1,26 @@
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand">User Data</a>
+  </div>
+</nav>
+<div class="container">
+<div class="row"  cdkDropList cdkDropListOrientation="horizontal"
+(cdkDropListDropped)="drop($event)" cdkDragHandle>
+    <div class="col-lg-4" *ngFor="let item of arr " >
+  <div class="card " cdkDrag>
+    <p class="card-text">UserID:{{item}}</p>
+    <h6>See All Data</h6>
+            <!-- <img src="{{one.urlToImage}}" class="card-img-top" alt="..."> 
+        <div class="card-body">
+          <h5 class="card-title"></h5>
+          
+        
+       
+        </div>-->
+       
+        <i (click)="display(item)" class="fa fa-chevron-circle-right fa-xl" aria-hidden="true"></i>
+      </div> 
+  
+</div>
+</div>
+</div>

@@ -1,0 +1,10 @@
+.container{
+    margin-top: 20px;
+    padding:20px
+}
+p{
+    width: 400px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

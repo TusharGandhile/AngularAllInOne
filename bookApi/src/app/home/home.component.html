@@ -1,0 +1,42 @@
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand">User Data</a>
+    <form class="d-flex">
+      <input class="form-control me-2" [(ngModel)]="searchText" id="search" placeholder="Search by UserID" [ngModelOptions]="{standalone: true}" aria-label="Search">
+     
+    </form>
+  </div>
+</nav>
+ <div class="container"> 
+<div class="row">
+    <div class="col-lg-4" *ngFor="let item of options | paginate: { currentPage:page, itemsPerPage:no, totalItems:totalLength}| filter:searchText" >
+      <div class="card " >
+        <!-- <img src="{{one.urlToImage}}" class="card-img-top" alt="...">  -->
+        <div class="card-body">
+            <h5 class="card-title">{{item.id}}</h5>
+          <h5 class="card-title">{{item.title}}</h5>
+          <p class="card-text"> {{item.body}} </p>
+        </div>
+       
+      </div>
+    </div>
+</div>
+
+</div>
+
+
+<div class="content">
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>
+  <table>
+  <tr>
+    <td><label id="lDisplayPerPg" for="lDisplayPerPg">Items/page</label>
+      <select #selectField  name="listDisplayPerPg" id="listDisplayPerPg" (change)="changeNo(selectField.value) ">
+        
+        <option value="10" >10</option>
+        <option value="5" >5</option>
+        <option value="2">2</option>
+      </select></td>
+  </tr>
+</table>
+</div>
+
