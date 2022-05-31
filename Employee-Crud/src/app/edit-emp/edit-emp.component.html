@@ -1,0 +1,98 @@
+<app-navbar></app-navbar>
+<div class="container pt-10 col-lg-6">
+    <h4>Edit Employee Details</h4>
+    <form [formGroup]="empForm" >
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input formControlName="name" type="text" class="form-control" >
+            <small *ngIf="empForm.get('name')?.invalid && empForm.get('name')?.touched" class="text-danger">Name is required..</small>
+        </div> 
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input formControlName="email"  type="text" class="form-control" >
+            <small *ngIf="empForm.get('email')?.invalid && empForm.get('email')?.touched" class="text-danger">Enter valid email..</small>
+        </div>
+        <div class="form-group">
+            <label for="mobile">Mobile No.</label>
+            <input formControlName="mobile"  type="number" class="form-control" >
+             <small *ngIf="empForm.get('mobile')?.invalid && empForm.get('mobile')?.touched" class="text-danger">Mobile number is required & must be 10 digits..</small>
+        </div>
+        <div class="form-group">
+            <label for="address">Address:</label>
+            <textarea formControlName="address" class="form-control"></textarea>
+            <small *ngIf="empForm.get('address')?.invalid && empForm.get('address')?.touched" class="text-danger">Address is required..</small>
+        </div> 
+        <div class="form-group">
+            <label for="state">State</label>
+        
+                <select #selectField (change)="changeState(selectField.value)" >
+                  <option value="">Choose your state</option>
+                  <option *ngFor="let item of State" [ngValue]="item">{{item}}</option>
+                </select>                
+              
+        </div>
+        <!-- <div class="form-group">
+            <label for="city">City</label>
+
+                <select #selectField (change)="changeCity(selectField.value)" >
+                  <option value="">Choose your city</option>
+                  <option  value='1'>1</option>
+                  <option  value='2'>2</option>
+                  <option  value='3'>3</option>
+                </select>                
+            
+        </div> -->
+        <div class="form-group">
+            <label for="date">Date of Birth:</label>
+            <input type="date" formControlName="date" name="date" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="gender">Gender:</label>
+            <div class="d-block my-3">
+            
+			<div class="custom-control custom-radio">
+            <input id="male" type="radio" class="custom-control-input" value="male" name="gender" formControlName="gender">
+              <label class="custom-control-label" for="male">Male</label>
+            </div>
+
+            <div class="custom-control custom-radio">
+              <input id="female" type="radio" class="custom-control-input" value="female" name="gender" formControlName="gender">
+              <label class="custom-control-label" for="female">Female</label>
+            </div>
+        </div>
+        </div>
+        <div class="form-group">
+            <div class="single">
+            <label for="hobbies">Hobbies:</label>
+            <label for="dancing">
+                <input type="checkbox"  formControlName="hobbies" value="dancing" class="form-group">
+                Dancing
+            </label>
+            <label for="singing">
+                <input type="checkbox"  formControlName="hobbies" value="singing" class="form-group">
+                Singing
+            </label>
+            <label for="coding">
+                <input type="checkbox"  formControlName="hobbies" value="coding" class="form-group">
+                Coding
+            </label>
+            <label for="reading">
+                <input type="checkbox"  formControlName="hobbies" value="reading" class="form-group">
+                Reading
+            </label>
+        </div>
+        </div>
+        <div class="form-group">
+           
+            <div class="slidecontainer">
+                <label for="skills">Rate your communication skills:</label>
+                <input type="range" min="1" max="5" value="2" class="slider" id="myRange">
+              </div>
+        </div>
+        <br>
+            <button  class="btn-primary" (click)="updateEmp()">Update Employee</button>
+            <br>
+            <a routerLink="/employee">Check employee list.. </a>
+       
+    </form>
+</div>

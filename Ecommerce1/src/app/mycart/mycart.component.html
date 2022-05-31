@@ -1,0 +1,45 @@
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand">D-Bazar</a>
+    <a>{{username}}</a>
+        <a>
+        <i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
+        <span style="font-size: 10px;" class="badge rounded-pill badge-notification bg-danger">{{cartItems.length}}</span>
+        </a>
+    </div>
+  </nav>
+  <table class="table table-striped">
+    <tr>
+      <th>#</th>
+      <th>Item</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>About Item</th>
+      <th>Total Amount</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let prod of cartItems;index as i">
+      <td>{{i+1}}</td>
+       <td><img src="{{prod.image}}"  class="card-img-top" alt="..."></td>
+      <td>{{prod.title.substring(0,30)}}...</td>
+      <td>${{prod.price}}</td>
+      <td>{{prod.quantity}}</td>
+      <td><p>{{prod.description.substring(0,50)}}...</p></td>
+      <td><p>{{prod.totalrate}}</p></td>
+      
+      
+
+      <td> <button class="btn-danger" (click)="remove(i)">Remove Item</button> </td> 
+    </tr>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>Grand Total={{grandTotal}}</th>
+    </tr>
+  </table>

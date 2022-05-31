@@ -1,0 +1,32 @@
+<app-navbar></app-navbar>
+<div  class="one">
+    <h3>Employee List</h3>
+    <button type="button" class="btn text-capitalize btn-primary" routerLink="/add-emp">Add Employee</button>
+</div>
+<div *ngIf="!show" class="container col-lg-8">
+<img class="default" src="http://admin.liveexamcenter.in/assets/images/no-data-commission.png" alt="">
+<h4>No Employee Added yet..</h4>
+</div>
+<div class="container">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Sr.No</th>
+            <th scope="col">Employee Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of empDetails;index as i">
+            <td>{{i+1}}</td>
+             <td>{{item.name}}</td> 
+            <td>{{item.email}}</td>
+            <td>{{item.mobile}}</td>
+            <td><i class="fa fa-pencil-square-o" aria-hidden="true" (click)="EditEmp(i)"></i><i class="fa fa-trash" aria-hidden="true" (click)="RemoveEmp(item)"></i></td>
+          </tr>
+      </tbody>
+      </table>
+</div>
+

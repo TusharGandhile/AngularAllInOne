@@ -1,0 +1,45 @@
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand">D-Bazar</a>
+      
+      <form class="d-flex">
+        <input class="form-control me-2" [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}" placeholder="Search" aria-label="Search">
+        </form>
+        <a>
+        <i class="fa fa-shopping-cart fa-2x" routerLink="/mycart" aria-hidden="true"></i>
+        <span style="font-size: 10px;" class="badge rounded-pill badge-notification bg-danger">1</span>
+        </a>
+    </div>
+  </nav>
+  <div class="container">
+        <div class="row">
+            <div class="col-lg-4" *ngFor="let item of items | paginate: { currentPage:page, itemsPerPage:no, totalItems:totalLength}| filter:searchText">
+              <div class="card " >
+                <img src="{{item.image}}"  class="card-img-top" alt="...">
+                <div class="card-body">
+
+                  <h5 class="card-title">{{item.title}}</h5>
+                 
+                  <p class="card-price"><span style="font-weight: bold;">Price : </span>${{item.price}}</p>
+                  <p class="card-price"> <span style="font-weight: bold;">Ratings : </span> {{item.rating.rate}} <i class="fa fa-star" aria-hidden="true"></i></p>
+                  <p class="card-text">{{item.description}}.</p>
+                  <button class="btn-primary" (click)="addToCart(item)">Add to Cart</button>
+                   </div>
+              </div>
+            </div>
+        </div>
+        
+        <div class="content">
+          <pagination-controls (pageChange)="page = $event"></pagination-controls>
+          <table>
+          <tr>
+            <td><label id="lDisplayPerPg" for="lDisplayPerPg">Items/page</label>
+              <select #selectField  name="listDisplayPerPg" id="listDisplayPerPg" (change)="changeNo(selectField.value) ">
+                <option value="20" >20</option>
+                <option value="15" >15</option>
+                <option value="10" >10</option>
+                <option value="5">5</option>
+              </select></td>
+          </tr>
+        </table>
+        </div> 

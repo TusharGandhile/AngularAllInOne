@@ -1,0 +1,28 @@
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand">D-Bazar</a>
+    
+        <a>
+        <i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
+        <span style="font-size: 10px;" class="badge rounded-pill badge-notification bg-danger">1</span>
+        </a>
+    </div>
+  </nav>
+  <table class="table table-striped">
+    <tr>
+      <th>#</th>
+      <th>Item</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>About Item</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let prod of product;index as i">
+      <td>{{prod.id}}</td>
+      <!-- <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td> -->
+    </tr>
+  </table>

@@ -1,0 +1,31 @@
+<h5>SignUp to Continue</h5>
+<div class="container-fluid">
+    <div class="container1 col-lg-6">
+     <!-- <img src="http://admin.liveexamcenter.in/assets/images/login.png" alt="">  -->
+    </div>
+<div class="container pt-10 col-lg-6">
+    <form [formGroup]="exForm" (ngSubmit)="login()">
+        <!-- <div class="form-group">
+            <label for="name">Name:</label>
+            <input formControlName="name" type="text" class="form-control" >
+            <small *ngIf="exForm.get('name')?.invalid && exForm.get('name')?.touched" class="text-danger">Name is required..</small>
+        </div> -->
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input formControlName="email"  type="text" class="form-control" >
+            <small *ngIf="exForm.get('email')?.invalid && exForm.get('email')?.touched" class="text-danger">Enter valid email..</small>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input formControlName="password"  type="text" class="form-control" >
+            <!-- <small *ngIf="exForm.get('mobile')?.invalid && exForm.get('mobile')?.touched" class="text-danger">Mobile number is required & must be 10 digits..</small> -->
+            <br><br>
+            <button [disabled]="exForm.invalid" class="btn-primary">Login</button>
+            <br>
+            <a routerLink="/signup">New User? Click here to Register </a>
+        </div>
+        <button class="btn btn-primary" (click)="loginwithGoogle()">Login with google</button>
+    </form>
+</div>
+</div>
+
