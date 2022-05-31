@@ -1,0 +1,36 @@
+.container-fluid{
+    border:3px solid rgb(42, 189, 128);
+    text-align: center;
+    width: 400px;
+    height:490px;
+    border-radius: 15px;
+    margin-top: 150px;
+    box-shadow:  5px 10px #888888;
+    background-color: white;
+}
+input{
+    width:270px;
+    border-radius: 20px;
+    height:40px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+select{
+    width:270px; 
+    border-radius: 20px;
+    height:40px;
+    margin-bottom: 30px;
+}
+textarea{
+    border-radius: 10px;
+}
+button{
+    
+    background-color: rgb(42, 189, 128);
+    border:none;
+    width:120px;
+    margin: 10px;
+}
+h3{
+    margin-top: 10px;
+}

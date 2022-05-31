@@ -1,0 +1,11 @@
+<p>My Name is: </p>
+<div *ngIf="myName"><h2>{{myName}}</h2></div>
+
+<div>
+    <h2>Child Component</h2>
+  
+    Child Value: <input type="text" [(ngModel)]="childValue">
+  
+    <br><br><br>
+    <button (click)="sendValueToParent()">Send Value To Parent</button>
+  </div>

@@ -1,0 +1,32 @@
+<app-header-task></app-header-task>
+<!-- <div cdkDropList *ngIf="isShow" class="container" (cdkDropListDropped)="drop($event)"  cdkDragHandle>
+    <div *ngFor="let mytasks of addtask;index as i" class="box" cdkDrag >
+            <h3>{{mytasks.title}}</h3>
+            <p>{{mytasks.detail}}</p>
+            <p>{{mytasks.date}}</p>
+            
+                <div class="edit"><i class="fa fa-check-circle-o fa-lg" aria-hidden="true" (click)="taskCompleted(i)" height="25px"></i>
+                    <i class="fa fa-pencil-square-o fa-lg"   (click)="update(i)" aria-hidden="true"></i>
+                 <i class="fa fa-trash fa-lg" aria-hidden="true" (click)="deleteNote(i)"></i></div>
+            
+        </div>
+  </div>  -->
+
+<div *ngIf="isShow"  cdkDropList cdkDropListOrientation="horizontal" class="example-list" 
+(cdkDropListDropped)="drop($event)" cdkDragHandle>
+    <h2 style="border-bottom:4px solid orange;padding-bottom: 10px;">Your Pending Tasks</h2>
+    <div class="example-box" *ngFor="let mytasks of addtask;index as i" cdkDrag>
+        <h3>{{mytasks.title}}</h3>
+        <p>{{mytasks.detail}}</p>
+        <p>{{mytasks.date}}</p>
+
+        <div class="edit"><i class="fa fa-check-circle-o fa-lg" aria-hidden="true" (click)="taskCompleted(i)" height="25px"></i>
+            <i class="fa fa-pencil-square-o fa-lg"   (click)="update(i)" aria-hidden="true"></i>
+         <i class="fa fa-trash fa-lg" aria-hidden="true" (click)="deleteNote(i)"></i>
+        </div>
+    
+
+    </div>
+  </div>
+  
+  <app-completed></app-completed>

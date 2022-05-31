@@ -1,0 +1,18 @@
+<!-- <app-note-page></app-note-page> -->
+<div *ngIf="taskadded && !anotheradded" class="container-fluid">
+    <h4>Edit the Task</h4>
+    <input type="text" #title value="{{naddtask.title}}" class="text" id="title" placeholder="title">
+    <textarea rows="3" cols="23" value="{{naddtask.detail}}" id="detail" placeholder="Enter text.."></textarea><br>
+    <input type="date" class="date" value="{{naddtask.date}}" id="newdate">
+    <select class="select" #selectField name="day" id="day" (change)="changedate(selectField.value)">
+        <option value="0" >Today</option>
+        <option value="1">Tomarrow</option>
+        <option value="2">Next week</option>
+        <option value="3">Next month</option>
+      </select><br>
+     <button class="btn btn-primary" routerLink="/task-board" (click)="updateNote()">Update</button>
+     <button class="btn btn-primary">Cancel</button> 
+    </div>
+
+  
+

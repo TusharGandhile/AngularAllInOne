@@ -1,0 +1,38 @@
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    
+  }
+  button{
+      
+      border: none;
+      border-radius: 10px;
+      background-color: #50c7c7;
+      height:40px;
+      font-weight: bold;
+      width: 200px;
+  }
+  i{
+    color: black;
+    padding-left: 30px;
+  }
+  i:hover{
+    color:red;
+  }
+  .dropup {
+    
+      position: relative;
+    margin: auto;
+    width: 25%;
+    border: 3px solid rgb(126, 207, 126);
+    border-radius: 10px;
+    background-color: beige;
+    padding: 10px;
+   
+  }
+
+

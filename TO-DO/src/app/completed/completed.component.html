@@ -1,0 +1,15 @@
+<footer>
+   
+    <div *ngIf="listdisplay" id="dropup" class="dropup"> 
+      <div style="color:darkgreen;font-weight:bold;margin-bottom: 20px;">Total Completed Tasks:{{task}}</div>
+    <div class="dropup-content"*ngFor="let task of taskcompleted;index as i" >
+        
+           {{i+1}}] {{task.title}} {{task.date}}  
+            
+            <i class="fa fa-times fa-lg" aria-hidden="true" (click)="deleteNote(i)" ></i>    
+                    
+        </div>
+      </div>
+
+<button id="sh" (click)="onclickcompleted()">  Completed Tasks({{task}})</button>
+</footer>

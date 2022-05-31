@@ -1,0 +1,42 @@
+<app-header></app-header>
+<div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+  <div *ngFor="let mytask of addtask;let i=index" class="box" cdkDrag  cdkDragHandle>
+    <h3>{{mytask.title}}</h3>
+    <p>{{mytask.detail}}</p>
+    <p>{{mytask.date}}</p>
+    <div class="icons">
+        <i class="fa fa-check-circle fa-lg" (click)="addToCompleted(i)" aria-hidden="true"></i>
+        <i class="fa fa-pencil-square fa-lg"[routerLink]="['/edit-task',mytask.id]" (click)="editTask()" aria-hidden="true"></i>
+        <i class="fa fa-trash fa-lg" (click)="deleteTask(i)"aria-hidden="true"></i>
+  </div>
+</div>
+<!-- <div class="list">
+    <div *ngFor="let mytask of addtask;let i=index" class="box">
+
+        <h3>{{mytask.title}}</h3>
+        <p>{{mytask.detail}}</p>
+        <p>{{mytask.date}}</p>
+        <div class="icons">
+        <i class="fa fa-check-circle fa-lg" (click)="addToCompleted(i)" aria-hidden="true"></i>
+            <i class="fa fa-pencil-square fa-lg" aria-hidden="true"></i>
+            <i class="fa fa-trash fa-lg" (click)="deleteTask(i)"aria-hidden="true"></i>
+        </div>
+        
+    </div>
+     <div class="box">
+        <h3>title...</h3>
+        <p>task details...</p>
+        <p>date</p>
+    </div>
+</div> -->
+<div *ngIf="isclicked && !isdblclick" class="container">
+    <h5>You Completed.!   <i class="fa fa-arrow-circle-left fa-lg" id="exit" (click)="cancleTask()" aria-hidden="true"></i></h5>
+    <div *ngFor="let task of addtocompleted;let i=index" class="card">
+       <p>{{i+1}} ]  {{task.title}}  {{task.date}}<i class="fa fa-times-circle-o fa-lg" (click)="deletePermanantly(i)" aria-hidden="true"></i></p>
+    </div>
+    
+  
+</div>
+<div id="mybutton">
+<button type="button" (click)="completedTask()" class="btn btn-success">Completed Task: ({{addtocompleted.length}})</button>
+</div>
