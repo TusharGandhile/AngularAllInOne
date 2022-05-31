@@ -1,0 +1,152 @@
+<app-navbar *ngIf="!expand"></app-navbar>
+<app-nav *ngIf="!expand"></app-nav>
+<div class="container col-lg-10">
+    <div class="header">
+        <h4>Edit Question</h4>
+        <mdb-icon *ngIf="!expand" fas icon="expand" class="icon" (click)="fullScreen()"></mdb-icon>
+        <mdb-icon *ngIf="expand" fas icon="compress" class="icon" (click)="compresScreen()"></mdb-icon>
+    </div>
+    <form [formGroup]="questionForm">
+        <!-- <ng-select [items]="subjectdata"
+        bindLabel="name"
+        class="form-select"
+        placeholder="Select city"
+        formControlName="subject">
+</ng-select>
+        <div class="row g-2">
+            <div class="col-md">
+        <div class="form-group">
+            <label for="subject">Select Subject</label>
+  <ng-select [items]=" subjectdata"
+        bindLabel="name"
+        bindValue="id"
+        formControlName="subject" >
+</ng-select>
+<small *ngIf="questionForm.get('subject')?.invalid && questionForm.get('subject')?.touched" class="text-danger">Subject Name is required..</small>
+</div>
+</div>
+
+    <div class="col-md">
+<div class="form-group">
+    <label for="topic">Select Topic</label>
+<ng-select [items]="topicdata"
+bindLabel="name"
+autofocus
+bindValue="id"
+formControlName="topic" >
+</ng-select>
+<small *ngIf="questionForm.get('topic')?.invalid && questionForm.get('topic')?.touched" class="text-danger">Topic Name is required..</small>
+</div>
+</div>
+</div> -->
+        <div class="row g-2">
+        <div class="col-md">
+        <div class="form-group">
+            <label for="subject">Select Subject</label>
+            <select #subjectfield formControlName="subject" class="form-select" aria-label="Default select example" placeholder="select subject" (change)="selectSubject(subjectfield.value)"> 
+                <option value=""></option>
+                <option *ngFor="let subject of subjectdata" value="{{subject._id}}">{{subject.name}}</option>
+              
+              </select>
+              <small *ngIf="questionForm.get('subject')?.invalid && questionForm.get('subject')?.touched" class="text-danger">Subject Name is required..</small>
+        </div>
+        </div>
+        <div class="col-md">
+        <div class="form-group">
+            <label for="topic">Select Topic</label>
+            <select #topicfield formControlName="topic" class="form-select" aria-label="Default select example" placeholder="select topic" (change)="selectTopic(topicfield.value)">  
+                <option value=""></option>
+                <option *ngFor="let topic of topicdata" value={{topic._id}}>{{topic.name}}</option>
+              </select>
+              <small *ngIf="questionForm.get('topic')?.invalid && questionForm.get('topic')?.touched" class="text-danger">Topic Name is required..</small>
+
+        </div>
+        </div>
+        </div>
+        <div class="row g-4">
+            <div class="col-md">
+        <div class="form-group">
+            <label for="qtype">Question Type</label>
+            <select #type formControlName="type" class="form-select" aria-label="Default select example" (change)="changeType(type.value)">
+                <option value="MULTIPLE CHOICE">MULTIPLE CHOICE</option>
+                <option value="MULTIPLE RESPONSE">MULTIPLE RESPONSE</option>
+                <option value="FILL IN BLANKS">FILL IN BLANKS</option>
+              </select>
+              <small *ngIf="questionForm.get('type')?.invalid && questionForm.get('type')?.touched" class="text-danger">Question Type is required..</small>
+
+        </div>
+        </div>
+        <div class="col-md">
+        <div class="form-group">
+            <label for="level">Difficulty Level</label>
+            <select formControlName="diffLevel" class="form-select" aria-label="Default select example">
+                <option value="Simple">Simple</option>
+                <option value="Medium">Medium</option>
+                <option value="Hard">Hard</option> 
+              </select>
+              <small *ngIf="questionForm.get('diffLevel')?.invalid && questionForm.get('diffLevel')?.touched" class="text-danger">Difficulty Level is required..</small>
+
+        </div>
+    </div>
+    <div class="col-md">
+        <div class="form-group">
+            <label for="rightmarks">Right Marks</label>
+            <input class="form-control"  formControlName="rightMarks" id="right" type="text">
+            <small *ngIf="questionForm.get('rightMarks')?.invalid && questionForm.get('rightMarks')?.touched" class="text-danger">Right Marks are required..</small>
+
+        </div>
+    </div>
+    <div class="col-md">
+        <div class="form-group">
+            <label for="wrongmarks">Wrong Marks</label>
+            <input class="form-control" formControlName="wrongMarks" id="wrong" type="text">
+            <small *ngIf="questionForm.get('wrongMarks')?.invalid && questionForm.get('wrongMarks')?.touched" class="text-danger">Wrong Marks are required..</small>
+
+        </div>
+    </div>
+</div>
+        <div class="form-group">
+            <label for="subject">Question</label>
+                <div class="form-floating"> 
+                
+                <textarea *ngIf="!rich" formControlName="questionText" class="form-control" id="floatingTextarea2" style="height: 100px"></textarea>
+                <ckeditor *ngIf="rich" formControlName="questionText" [editor]="Editor" data=""></ckeditor>
+                <small *ngIf="questionForm.get('question')?.invalid && questionForm.get('question')?.touched" class="text-danger">Wrong Marks are required..</small>
+
+            </div>
+            </div>
+      <a *ngIf="!rich" (click)="enablerich()">Enable rich text editor..</a>
+      <a *ngIf="rich"  (click)="disablerich()">disable rich text editor..</a>
+
+
+            <div class="form-group" *ngFor="let option of options;index as i">
+                <div class="d-flex">
+                <div class="one">
+                    <input *ngIf="!ctype" name="optype" type="radio" id={{i}}>
+                    <input *ngIf="ctype" name="optype" type="checkbox" id={{i}}>
+
+                <label for="subject">Option{{i+1}}</label>
+            </div>
+                    
+            <div class="form-floating">
+                      
+             <textarea *ngIf="!(richtext[i]==i)" #one formControlName="options" class="form-control"  id="floatingTextarea" [value]="option" (change)="optionsOne(one.value,i)" style="height: 100px"></textarea>
+            <ckeditor *ngIf="richtext[i]==i" formControlName="options" [editor]="Editortxt" data=""></ckeditor>
+                  </div>
+                </div>
+                  <a  *ngIf="!(richtext[i]==i)"  (click)="enablerichOpt(i)">Enable rich text editor..</a>
+                  <a  *ngIf="richtext[i]==i"   (click)="disablerichOpt(i)">disable rich text editor..</a>
+                  |
+                  <a (click)="removeOption(i)">Remove Option..</a>
+                  <!-- <small *ngIf=" questionForm.get('option')?.touched" class="text-danger">Option is required..</small> -->
+
+                  </div>
+                  <button class="add btn btn-light" (click)="addOption()">+ Add Option</button>
+      </form>
+      <div class="form-floating1">
+          <button class="btn text-capitalize btn-primary"(click)="saveQuestion()">Update Question</button>
+          <button class="btn text-capitalize btn-light">Cancel</button>
+          
+      </div>
+</div>
+

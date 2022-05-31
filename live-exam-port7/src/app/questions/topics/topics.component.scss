@@ -1,0 +1,31 @@
+.one{
+    display: flex;
+    justify-content: space-between;
+   // margin-top: 40px;
+    margin:40px 100px;
+}
+.container{
+    border:1px solid rgb(192, 184, 184);
+    //align-items: center;
+   // text-align: center;
+    padding: 20px;
+    margin-bottom: 50px;
+    border-radius: 10px;
+}
+.page{
+    text-align: right;
+    margin-top: 30px;
+    
+}
+tr{
+    height: 50px;
+}
+.content{
+    border-bottom: 2px solid rgb(197, 195, 195);
+    padding-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+th{
+    border-bottom: 2px solid rgb(197, 195, 195); ;
+}

@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    
+        <img class="img-fluid" src="../../assets/images/logo.svg" alt="">
+        <div class="container-fluid">
+      <a class="navbar-brand" href="#"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link" routerLink="/dashboard/default" ><i class="fa fa-home" aria-hidden="true"></i>Dashboard</a>
+          <a class="nav-link" routerLink="/questions/"><i class="fa fa-desktop" aria-hidden="true"></i>Questions</a>
+          <a class="nav-link" ><i class="fa fa-desktop" aria-hidden="true"></i>Tests</a>
+          <a class="nav-link" ><i class="fa fa-flag" aria-hidden="true"></i>Reports</a>
+          <a class="nav-link"><i class="fa fa-cog" aria-hidden="true"></i>Settings</a>
+        </div>
+      </div>
+      <i class="fa fa-bell-o text-light fa-lg"  aria-hidden="true"></i>
+      <ngx-avatar bgColor="#8e44ad" size="35" name={{user.user.firstName}} (click)="basicModal.show()"></ngx-avatar>
+
+      <!-- <ngx-letters-avatar 
+      [avatarName]="user.user.firstName" 
+      [width]="40" 
+      [circular]="true"
+      fontFamily="Open Sans"></ngx-letters-avatar> -->
+      <!-- <i class="fa fa-user-circle-o text-light fa-2x" (click)="basicModal.show()" aria-hidden="true"> </i> -->
+    </div>
+    <div  mdbModal #basicModal="mdbModal" class="modal right fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-side modal-top-right model-sm">
+        <div class="modal-content">
+        
+          <div class="modal-body">
+          <p>Hello, {{user.user.firstName}}</p> 
+           <button class="logout" (click)="logout()"> <i class="fa fa-sign-out" aria-hidden="true"></i>Logout</button><br>
+            <button class="Profile"><i class="fa fa-user" aria-hidden="true"></i>My profile</button> <br>
+           <button class="password"><i class="fa fa-key" aria-hidden="true"></i>Change password</button><br>
+           <button class="settings"><i class="fa fa-cog" aria-hidden="true"></i>Organization Settings</button>
+            </div>
+            </div>
+            </div>
+            </div>
+  </nav>

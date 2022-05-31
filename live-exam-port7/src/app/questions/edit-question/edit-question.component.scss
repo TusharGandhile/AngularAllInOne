@@ -1,0 +1,49 @@
+.form-group{
+    padding:20px;
+}
+.one{
+    border:1px solid rgb(211, 211, 211);
+    padding-top: 35px;
+}
+
+.form-floating1{
+    margin-top:25px;
+    border:1px solid  rgb(211, 211, 211);
+    
+}
+button{
+    margin: 20px;
+    border: none;
+}
+.container{
+//margin:20px;
+margin-top: 30px;
+    border:1px solid  rgb(211, 211, 211);
+}
+.header{
+    display:flex;
+    justify-content: space-between;
+    margin: 20px;
+    padding: 25px;
+    border:1px solid  rgb(211, 211, 211);
+}
+.icon{
+    font-size: 25px;
+}
+.add{
+    color:rgb(0, 102, 255)
+}
+#floatingTextarea{
+    width:630px;
+}
+a{
+    padding: 15px;
+}
+.row{
+    display:flex;
+}
+
+.ng-autocomplete{
+    width:400px;
+    
+}

@@ -1,0 +1,69 @@
+<app-navbar></app-navbar>
+<app-nav></app-nav>
+<div class="one">
+    <h3>Questions</h3>
+    <button type="button" class="btn text-capitalize btn-primary" routerLink="/questions/add-question">+Add Questions</button>
+
+</div>
+<!-- <div class="container col-lg-8">
+<img class="default" src="http://admin.liveexamcenter.in/assets/images/no-data-commission.png" alt="">
+<h4>No Questions available</h4>
+<a href="#">Add Questions</a>
+</div> -->
+<div class="container col-lg-8">
+    <div class="content">
+        
+        <table>
+        <tr>
+            
+          <td><input type="checkbox"><label id="lDisplayPerPg" for="lDisplayPerPg">Show
+            <select #selectField  name="listDisplayPerPg" id="listDisplayPerPg" (change)="changeNo(selectField.value) ">
+              <option value="20" >20</option>
+              <option value="15" >15</option>
+              <option value="10" >10</option>
+              <option value="5">5</option>
+            </select>Items per page</label></td>
+        </tr>
+      </table>
+      <form class="d-flex">
+        <input class="form-control me-2" [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}" placeholder="Search Question" aria-label="Search">
+        </form>
+        <table>
+            <tr>
+              <td>
+                <select #selectTopics name="listDisplayPerPg" (change)="selectTopic(selectTopics.value)" id="listDisplayPerPg" >
+                <option value="" >Choose Topic</option>
+                  <option *ngFor="let topic of topiclist" [value]="topic._id" >{{topic.name}}</option>
+                  
+                </select></td>
+            </tr>
+          </table>
+      </div> 
+
+  
+    <form >
+        
+        <div class="container1" *ngFor="let option of response | paginate: { currentPage:page, itemsPerPage:no, totalItems:totalLength} | filter:searchText ;index as i">
+            
+            <label class="question">
+                <input type="checkbox">
+                {{option.questionText}}</label>
+            <div *ngFor="let op of option.options;index as j">
+                <label for="options">
+                    <input  type="radio" class="radio" name="option" >
+                    <input *ngIf="ctype" name="optype" type="checkbox" >
+                   {{op.option}}
+                </label>
+              
+            </div>
+            <i class="fa fa-pencil-square-o" (click)="editQuestion(response[i]._id)" aria-hidden="true"></i><i class="fa fa-trash" (click)="deleteQuestion(option)" aria-hidden="true"></i>
+        </div>
+        
+    </form>
+   
+   <div class="page">
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+   </div>
+    </div>
+   
+    
